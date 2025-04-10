@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import './SignUpForm.css';
 import googleIcon from '../../assets/google.webp';
 import appleIcon from '../../assets/apple.png';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const SignUpForm = ({ onClose, onSwitchToLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +26,14 @@ const SignUpForm = ({ onClose, onSwitchToLogin }) => {
   const handleClose = (e) => {
     e.stopPropagation();
     onClose();
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   return (
@@ -54,28 +64,38 @@ const SignUpForm = ({ onClose, onSwitchToLogin }) => {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Create a password"
+                placeholder="Enter your password"
                 required
               />
-              <span
-                className="toggle-password"
-                onClick={() => setShowPassword(!showPassword)}
+              <button 
+                type="button" 
+                className="password-toggle"
+                onClick={togglePasswordVisibility}
               >
-                {showPassword ? "👁️" : "👁️"}
-              </span>
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
             </div>
           </div>
 
           <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <input
-              type={showPassword ? "text" : "password"}
-              id="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="Confirm your password"
-              required
-            />
+            <label htmlFor="confirm-password">Confirm Password</label>
+            <div className="password-input">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                id="confirm-password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="Confirm your password"
+                required
+              />
+              <button 
+                type="button" 
+                className="password-toggle"
+                onClick={toggleConfirmPasswordVisibility}
+              >
+                {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
           </div>
           
           <button type="submit" className="form-signup-btn">Create Account</button>

@@ -174,26 +174,26 @@
   
   .password-input {
     position: relative;
-    width: 100%;
+    display: flex;
+    align-items: center;
   }
   
   .password-input input {
     width: 100%;
-    padding-right: 40px;
   }
   
-  .toggle-password {
+  .password-toggle {
     position: absolute;
     right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
     background: none;
     border: none;
-    color: #666;
     cursor: pointer;
-    padding: 5px;
+    color: #666;
+    padding: 0;
+    display: flex;
+    align-items: center;
   }
   
-  .toggle-password:hover {
-    color: var(--primary-color);
-  } 
+  .password-toggle:hover {
+    color: #333;
+  }

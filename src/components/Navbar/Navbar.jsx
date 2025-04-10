@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import LoginForm from '../LoginForm/LoginForm';
-import SignUpForm from '../SignUpForm/SignUpForm';
+import LoginForm from '../LoginForm/LoginForm.jsx';
+import SignUpForm from '../SignUpForm/SignUpForm.jsx';
 import logo from '../../assets/logo.png';
 
 const Navbar = () => {
